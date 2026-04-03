@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bazee – Move More. Together.</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --ocean: #1E3A5F;
+            --sky: #4A90E2;
+            --mist: #A8D8EA;
+            --ice: #F0F8FF;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Rounded', 'SF Pro Text', sans-serif;
+            background: var(--ice);
+            color: var(--ocean);
+            overflow-x: hidden;
+        }
+
+        /* ─── Nav ─── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 40px;
+            background: rgba(240, 248, 255, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(74, 144, 226, 0.15);
+        }
+
+        .nav-logo {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--ocean), var(--sky));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, var(--sky), var(--ocean));
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 22px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 15px;
+            transition: opacity 0.2s;
+        }
+        .nav-cta:hover { opacity: 0.85; }
+
+        /* ─── Hero ─── */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding-top: 80px;
+            background: linear-gradient(160deg, #F0F8FF 0%, #E0F2FA 60%, #C8E8F5 100%);
+            overflow: hidden;
+        }
+
+        .hero-text {
+            padding: 80px 56px 80px 64px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(74, 144, 226, 0.12);
+            color: var(--sky);
+            border: 1px solid rgba(74,144,226,0.3);
+            border-radius: 50px;
+            padding: 6px 18px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: clamp(38px, 4.5vw, 68px);
+            font-weight: 900;
+            line-height: 1.05;
+            background: linear-gradient(135deg, var(--ocean) 0%, var(--sky) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 24px;
+        }
+
+        .hero-text p {
+            font-size: clamp(16px, 1.8vw, 20px);
+            color: #4a6b8a;
+            line-height: 1.65;
+            margin-bottom: 40px;
+            max-width: 460px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, var(--sky), var(--ocean));
+            color: #fff;
+            text-decoration: none;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-size: 17px;
+            font-weight: 700;
+            box-shadow: 0 8px 32px rgba(74,144,226,0.35);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(74,144,226,0.45); }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.7);
+            color: var(--ocean);
+            text-decoration: none;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-size: 17px;
+            font-weight: 600;
+            border: 1.5px solid rgba(74,144,226,0.25);
+            transition: background 0.2s;
+        }
+        .btn-secondary:hover { background: rgba(255,255,255,0.95); }
+
+        /* Hero photo side */
+        .hero-photo {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+        }
+
+        .hero-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        .hero-photo-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(224,242,250,0.6) 0%, transparent 30%);
+        }
+
+        /* Floating ring widget */
+        .ring-widget {
+            position: absolute;
+            bottom: 48px;
+            left: -40px;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 24px;
+            padding: 20px 24px;
+            box-shadow: 0 16px 48px rgba(30,58,95,0.18);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            border: 1px solid rgba(255,255,255,0.9);
+            z-index: 10;
+        }
+
+        .ring-widget svg { width: 80px; height: 80px; flex-shrink: 0; }
+
+        .ring-widget-text { }
+        .ring-widget-text .score { font-size: 26px; font-weight: 900; color: var(--ocean); line-height: 1; }
+        .ring-widget-text .sublabel { font-size: 12px; color: #7a9ab8; margin-top: 2px; font-weight: 500; }
+        .ring-widget-text .names { font-size: 13px; color: var(--sky); font-weight: 600; margin-top: 6px; }
+
+        /* ─── Stats ─── */
+        .stats-bar {
+            background: linear-gradient(135deg, var(--ocean), #2a5280);
+            padding: 48px 40px;
+            display: flex;
+            justify-content: center;
+            gap: clamp(32px, 8vw, 96px);
+            flex-wrap: wrap;
+        }
+
+        .stat { text-align: center; color: #fff; display: flex; flex-direction: column; align-items: center; }
+        .stat .num {
+            width: 64px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.12);
+            border-radius: 18px;
+            margin-bottom: 4px;
+        }
+        .stat .num svg { width: 34px; height: 34px; }
+        .stat .label { font-size: 13px; opacity: 0.65; margin-top: 6px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+
+        /* ─── Photo strip ─── */
+        .photo-strip {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            height: 340px;
+            overflow: hidden;
+        }
+
+        .photo-strip-item {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .photo-strip-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .photo-strip-item:hover img { transform: scale(1.04); }
+
+        .photo-strip-caption {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 20px;
+            background: linear-gradient(to top, rgba(30,58,95,0.75) 0%, transparent 100%);
+            color: #fff;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        /* ─── Features ─── */
+        .section { padding: 96px 24px; max-width: 1100px; margin: 0 auto; }
+
+        .section-label {
+            display: inline-block;
+            background: rgba(74,144,226,0.1);
+            color: var(--sky);
+            border-radius: 50px;
+            padding: 5px 16px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section h2 {
+            font-size: clamp(30px, 4vw, 48px);
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--ocean), var(--sky));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section > p {
+            font-size: 18px;
+            color: #4a6b8a;
+            line-height: 1.7;
+            max-width: 560px;
+            margin-bottom: 56px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0 4px 24px rgba(30,58,95,0.07);
+            border: 1px solid rgba(74,144,226,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(30,58,95,0.12); }
+
+        .feature-icon {
+            width: 56px; height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .icon-blue  { background: linear-gradient(135deg, #E8F4FF, #C8E4FF); }
+        .icon-green { background: linear-gradient(135deg, #E8FFF0, #C8FFD8); }
+        .icon-pink  { background: linear-gradient(135deg, #FFE8F4, #FFD0E8); }
+        .icon-amber { background: linear-gradient(135deg, #FFF8E8, #FFE8C0); }
+
+        .feature-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; color: var(--ocean); }
+        .feature-card p  { font-size: 15px; color: #5a7a9a; line-height: 1.6; }
+
+        /* ─── How it works ─── */
+        .how-section {
+            background: linear-gradient(160deg, #E8F4FB 0%, var(--ice) 100%);
+            padding: 96px 24px;
+        }
+        .how-inner { max-width: 1100px; margin: 0 auto; }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 32px;
+            margin-top: 56px;
+        }
+
+        .step { text-align: center; padding: 16px; }
+        .step-num {
+            width: 52px; height: 52px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--sky), var(--ocean));
+            color: #fff;
+            font-size: 22px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            box-shadow: 0 4px 16px rgba(74,144,226,0.4);
+        }
+        .step h3 { font-size: 18px; font-weight: 700; color: var(--ocean); margin-bottom: 8px; }
+        .step p  { font-size: 15px; color: #5a7a9a; line-height: 1.6; }
+
+        /* ─── Photo cards ("Who is this for") ─── */
+        .audience-section {
+            padding: 80px 24px 0;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .audience-card {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(30,58,95,0.1);
+            background: #fff;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+        .audience-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(30,58,95,0.16); }
+
+        .audience-card-photo {
+            position: relative;
+            height: 240px;
+            overflow: hidden;
+        }
+
+        .audience-card-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .audience-card:hover .audience-card-photo img { transform: scale(1.05); }
+
+        .audience-card-photo-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 50%, rgba(30,58,95,0.35) 100%);
+        }
+
+        .audience-card-body {
+            padding: 24px 28px 28px;
+        }
+
+        .audience-card-body h3 {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--ocean);
+            margin-bottom: 8px;
+        }
+
+        .audience-card-body p {
+            font-size: 15px;
+            color: #5a7a9a;
+            line-height: 1.65;
+        }
+
+        /* ─── Privacy callout ─── */
+        .privacy-wrap {
+            padding: 64px 24px 80px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .privacy-callout {
+            background: #fff;
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto;
+            box-shadow: 0 4px 24px rgba(30,58,95,0.07);
+            border: 1px solid rgba(74,144,226,0.1);
+        }
+        .privacy-callout .lock { font-size: 40px; margin-bottom: 16px; }
+        .privacy-callout h3 { font-size: 22px; font-weight: 700; color: var(--ocean); margin-bottom: 10px; }
+        .privacy-callout p { font-size: 15px; color: #5a7a9a; line-height: 1.6; }
+        .privacy-callout a { color: var(--sky); text-decoration: none; font-weight: 600; }
+        .privacy-callout a:hover { text-decoration: underline; }
+
+        /* ─── CTA Section ─── */
+        .cta-section {
+            position: relative;
+            padding: 120px 24px;
+            text-align: center;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .cta-section-bg {
+            position: absolute;
+            inset: 0;
+        }
+
+        .cta-section-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 30%;
+        }
+
+        .cta-section-bg-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(30,58,95,0.88) 0%, rgba(42,82,128,0.82) 100%);
+        }
+
+        .cta-section-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(32px, 4vw, 56px);
+            font-weight: 900;
+            margin-bottom: 16px;
+            background: linear-gradient(90deg, var(--mist), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .cta-section p {
+            font-size: 19px;
+            opacity: 0.8;
+            margin-bottom: 40px;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .app-store-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #fff;
+            color: var(--ocean);
+            text-decoration: none;
+            padding: 18px 36px;
+            border-radius: 18px;
+            font-weight: 700;
+            font-size: 17px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+            transition: transform 0.2s;
+        }
+        .app-store-btn:hover { transform: translateY(-2px); }
+        .app-store-btn svg { width: 28px; height: 28px; }
+
+        /* ─── Footer ─── */
+        footer {
+            background: var(--ocean);
+            color: rgba(255,255,255,0.6);
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 14px;
+        }
+        footer a { color: var(--mist); text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
+        .footer-links { display: flex; gap: 24px; }
+        .footer-logo { font-weight: 800; font-size: 20px; color: #fff; }
+
+        /* ─── Responsive ─── */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+            .hero-text {
+                padding: 100px 28px 40px;
+                align-items: center;
+                text-align: center;
+            }
+            .hero-text p { margin-left: auto; margin-right: auto; }
+            .hero-buttons { justify-content: center; }
+            .hero-photo { height: 360px; min-height: unset; }
+            .ring-widget { left: 16px; right: 16px; bottom: 16px; }
+            .photo-strip { grid-template-columns: 1fr 1fr; height: 260px; }
+            .photo-strip-item:last-child { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+    <span class="nav-logo">Bazee</span>
+    <div style="display:flex;align-items:center;gap:28px;">
+        <a href="#features" style="text-decoration:none;font-size:15px;font-weight:600;color:#1E3A5F;opacity:0.75;transition:opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.75">Features</a>
+        <a href="#pricing" style="text-decoration:none;font-size:15px;font-weight:600;color:#1E3A5F;opacity:0.75;transition:opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.75">Pricing</a>
+        <a href="#download" class="nav-cta">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            Get the App
+        </a>
+    </div>
+</nav>
+
+<!-- Hero: split layout -->
+<section class="hero">
+    <div class="hero-text">
+        <div class="badge">Free on the App Store</div>
+        <h1>Move more.<br>Cheer each other on.<br>Close those rings.</h1>
+        <p>Bazee is the fun, pressure-free way to get moving with the people you love. No judgment, no gym-bro energy — just you, your family, and your friends cheering each other on every day.</p>
+        <div class="hero-buttons">
+            <a href="#download" class="btn-primary">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                Try Bazee Free
+            </a>
+            <a href="#features" class="btn-secondary">How it works ↓</a>
+        </div>
+    </div>
+
+    <div class="hero-photo">
+        <!-- Photo: group of friends laughing outdoors on a walk — Unsplash by Alexis Brown -->
+        <img
+            src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=82"
+            alt="Friends laughing and walking outdoors together"
+            loading="eager"
+        />
+        <div class="hero-photo-overlay"></div>
+
+        <!-- Floating ring widget -->
+        <div class="ring-widget">
+            <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="40" cy="40" r="34" stroke="#FFE0E6" stroke-width="7"/>
+                <circle cx="40" cy="40" r="34" stroke="#FF375F" stroke-width="7"
+                        stroke-dasharray="213.6" stroke-dashoffset="43"
+                        stroke-linecap="round" transform="rotate(-90 40 40)"/>
+                <circle cx="40" cy="40" r="25" stroke="#D8F5E0" stroke-width="7"/>
+                <circle cx="40" cy="40" r="25" stroke="#30D158" stroke-width="7"
+                        stroke-dasharray="157" stroke-dashoffset="47"
+                        stroke-linecap="round" transform="rotate(-90 40 40)"/>
+                <circle cx="40" cy="40" r="16" stroke="#D6F4FF" stroke-width="7"/>
+                <circle cx="40" cy="40" r="16" stroke="#32D2FF" stroke-width="7"
+                        stroke-dasharray="100.5" stroke-dashoffset="20"
+                        stroke-linecap="round" transform="rotate(-90 40 40)"/>
+            </svg>
+            <div class="ring-widget-text">
+                <div class="score">842 pts</div>
+                <div class="sublabel">Today's score</div>
+                <div class="names">You're 2nd 🔥 keep going!</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats bar -->
+<div class="stats-bar">
+    <div class="stat">
+        <div class="num">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#A8D8EA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+        </div>
+        <div class="label">Family &amp; Friends</div>
+    </div>
+    <div class="stat">
+        <div class="num">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#A8D8EA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+        </div>
+        <div class="label">Zero Judgment</div>
+    </div>
+    <div class="stat">
+        <div class="num">
+            <svg viewBox="0 0 36 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="6"  cy="12" r="5" stroke="#FF375F" stroke-width="2"/>
+                <circle cx="18" cy="12" r="5" stroke="#30D158" stroke-width="2"/>
+                <circle cx="30" cy="12" r="5" stroke="#0A84FF" stroke-width="2"/>
+            </svg>
+        </div>
+        <div class="label">Three Rings, One Goal</div>
+    </div>
+    <div class="stat">
+        <div class="num">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#A8D8EA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
+                <polyline points="16 7 22 7 22 13"/>
+            </svg>
+        </div>
+        <div class="label">Celebrate Every Win</div>
+    </div>
+</div>
+
+<!-- Photo strip -->
+<div class="photo-strip">
+    <div class="photo-strip-item">
+        <!-- Photo: family biking together — Unsplash by Coen van den Broek -->
+        <img
+            src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=900&q=80"
+            alt="Family biking together outdoors"
+            loading="lazy"
+        />
+        <div class="photo-strip-caption">Every step together counts 💛</div>
+    </div>
+    <div class="photo-strip-item">
+        <!-- Photo: friends on a morning walk — Unsplash by Boxed Water Is Better -->
+        <img
+            src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=600&q=80"
+            alt="Friends walking outdoors in the morning"
+            loading="lazy"
+        />
+        <div class="photo-strip-caption">Morning walks hit different 🌤️</div>
+    </div>
+    <div class="photo-strip-item">
+        <!-- Photo: group celebrating outdoors — Unsplash by Felix Rostig -->
+        <img
+            src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=600&q=80"
+            alt="Group of people celebrating outdoors"
+            loading="lazy"
+        />
+        <div class="photo-strip-caption">Rings closed. Day won. 🎊</div>
+    </div>
+</div>
+
+<!-- Features -->
+<section class="section" id="features">
+    <div class="section-label">Why Bazee</div>
+    <h2>Moving is better<br>with people you love</h2>
+    <p>Whether it's your mom, your college roommate, or your whole family group chat — Bazee gives everyone a reason to get up and move today.</p>
+
+    <div class="features-grid">
+        <div class="feature-card">
+            <div class="feature-icon icon-pink">🏆</div>
+            <h3>Friendly Daily Challenges</h3>
+            <p>Start a challenge with anyone. See how everyone's doing throughout the day and root each other on — no trash talk required (but welcome).</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon icon-blue">🔴🟢🔵</div>
+            <h3>Close Your Three Rings</h3>
+            <p>Your Apple Watch tracks how much you move, how long you work out, and how often you stand up. Bazee turns those rings into a shared adventure.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon icon-green">🎯</div>
+            <h3>Your Pace, Your Goals</h3>
+            <p>Set targets that fit your life — not some influencer's. A grandparent and a marathon runner can compete side by side and it'll still be fun.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon icon-amber">🎉</div>
+            <h3>Celebrate Every Win</h3>
+            <p>Closed all three rings? Took a walk at lunch? Your group sees it. Every bit of effort gets celebrated, no matter how big or small.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon icon-pink">🕐</div>
+            <h3>Eating Window Tracker</h3>
+            <p>Track when you eat with a simple, beautiful clock. Set a different schedule for each day of the week and Bazee keeps you on track quietly.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon icon-blue">☁️</div>
+            <h3>Auto Backup &amp; Offline Access</h3>
+            <p>Your data is automatically backed up so you never lose a thing. Everything works offline too — no signal, no problem.</p>
+        </div>
+    </div>
+</section>
+
+<!-- How it works -->
+<div class="how-section" id="how">
+    <div class="how-inner">
+        <div style="text-align:center">
+            <div class="section-label">Getting Started</div>
+            <h2 style="font-size:clamp(30px,4vw,48px);font-weight:800;background:linear-gradient(135deg,#1E3A5F,#4A90E2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;">Ready in under a minute</h2>
+            <p style="font-size:18px;color:#4a6b8a;max-width:480px;margin:0 auto;">All you need is your iPhone and Apple Watch. No setup headaches, no fitness knowledge required.</p>
+        </div>
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <h3>Download &amp; Sign In</h3>
+                <p>One tap and you're in. No passwords to remember, no forms to fill out.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <h3>Let Your Watch In</h3>
+                <p>Allow Bazee to read your activity rings. Your rings appear instantly and update all day long.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <h3>Invite Your People</h3>
+                <p>Start a challenge and share a link. Group chat? Perfect. Family text thread? Even better.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">4</div>
+                <h3>Move, Cheer, Repeat</h3>
+                <p>Watch everyone's rings fill up through the day. Every step counts. Every closed ring is worth celebrating.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Who is this for — photo cards -->
+<div class="audience-section">
+    <div style="text-align:center">
+        <div class="section-label">Made for everyone</div>
+        <h2 style="font-size:clamp(30px,4vw,48px);font-weight:800;background:linear-gradient(135deg,#1E3A5F,#4A90E2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;">No athletes required</h2>
+        <p style="font-size:18px;color:#4a6b8a;max-width:520px;margin:0 auto;">Bazee works for the whole crew — couch-to-5K folks, daily walkers, weekend hikers, and yes, the competitive ones too.</p>
+    </div>
+
+    <div class="audience-grid">
+        <div class="audience-card">
+            <div class="audience-card-photo">
+                <img
+                    src="family.jpg"
+                    alt="Family laughing and playing outdoors"
+                    loading="lazy"
+                />
+                <div class="audience-card-photo-overlay"></div>
+            </div>
+            <div class="audience-card-body">
+                <h3>Families 👨‍👩‍👧</h3>
+                <p>Get the whole household moving. Even the kids love checking the leaderboard and seeing Mom in the lead.</p>
+            </div>
+        </div>
+
+        <div class="audience-card">
+            <div class="audience-card-photo">
+                <img
+                    src="friends.jpg"
+                    alt="Group of friends laughing and having fun"
+                    loading="lazy"
+                />
+                <div class="audience-card-photo-overlay"></div>
+            </div>
+            <div class="audience-card-body">
+                <h3>Friend Groups 👯</h3>
+                <p>That group chat that never actually does anything? Now it does. Start a challenge and watch everyone wake up.</p>
+            </div>
+        </div>
+
+        <div class="audience-card">
+            <div class="audience-card-photo">
+                <img
+                    src="coworkers.jpg"
+                    alt="Coworkers smiling together"
+                    loading="lazy"
+                />
+                <div class="audience-card-photo-overlay"></div>
+            </div>
+            <div class="audience-card-body">
+                <h3>Coworkers 🏢</h3>
+                <p>A little friendly office rivalry goes a long way. Great for team wellness or just making Mondays bearable.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Privacy callout -->
+<div class="privacy-wrap">
+    <div class="privacy-callout">
+        <div class="lock">🔒</div>
+        <h3>We never see your health data</h3>
+        <p>Your activity stays on your own devices — always. It's automatically backed up so you never lose your history. Only your name and daily score are ever shared with your group. We don't sell anything, ever. <a href="bazee-privacy-policy.html">Read our Privacy Policy →</a></p>
+    </div>
+</div>
+
+<!-- Pricing -->
+<section id="pricing" style="padding:96px 24px;background:linear-gradient(160deg,#E8F4FB 0%,#F0F8FF 100%);">
+    <div style="max-width:900px;margin:0 auto;text-align:center;">
+        <div class="section-label">Pricing</div>
+        <h2 style="font-size:clamp(30px,4vw,48px);font-weight:800;background:linear-gradient(135deg,#1E3A5F,#4A90E2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;">Try free for 1 month</h2>
+        <p style="font-size:18px;color:#4a6b8a;max-width:480px;margin:0 auto 52px;">No credit card pressure. Explore everything for 30 days on us, then pick the plan that fits.</p>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;align-items:stretch;">
+
+            <!-- Individual -->
+            <div style="background:#fff;border-radius:24px;padding:36px 32px;box-shadow:0 4px 24px rgba(30,58,95,0.08);border:1.5px solid rgba(74,144,226,0.18);display:flex;flex-direction:column;gap:0;">
+                <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#4A90E2;margin-bottom:12px;">Individual</div>
+                <div style="font-size:46px;font-weight:900;color:#1E3A5F;line-height:1;">$7<span style="font-size:16px;font-weight:500;color:#7a9ab8;">/mo</span></div>
+                <div style="font-size:13px;color:#4A90E2;font-weight:600;margin-top:6px;margin-bottom:28px;">after 1-month free trial</div>
+
+                <ul style="list-style:none;padding:0;margin:0 0 32px;display:flex;flex-direction:column;gap:12px;text-align:left;">
+                    <li style="display:flex;align-items:center;gap:10px;font-size:15px;color:#3d5166;">
+                        <span style="color:#30D158;font-size:17px;">✓</span> All competitions &amp; leaderboards
+                    </li>
+                    <li style="display:flex;align-items:center;gap:10px;font-size:15px;color:#3d5166;">
+                        <span style="color:#30D158;font-size:17px;">✓</span> Activity ring tracking
+                    </li>
+                    <li style="display:flex;align-items:center;gap:10px;font-size:15px;color:#3d5166;">
+                        <span style="color:#30D158;font-size:17px;">✓</span> Eating window tracker
+                    </li>
+                    <li style="display:flex;align-items:center;gap:10px;font-size:15px;color:#3d5166;">
+                        <span style="color:#30D158;font-size:17px;">✓</span> Full history &amp; badges
+                    </li>
+                </ul>
+
+                <a href="#download" style="display:block;text-align:center;background:rgba(74,144,226,0.1);color:#1E3A5F;font-weight:700;font-size:16px;padding:14px 24px;border-radius:50px;text-decoration:none;border:1.5px solid rgba(74,144,226,0.25);margin-top:auto;transition:background 0.2s;">
+                    Start Free Trial
+                </a>
+            </div>
+
+            <!-- Family — highlighted -->
+            <div style="background:linear-gradient(135deg,#1E3A5F,#2a5280);border-radius:24px;padding:36px 32px;box-shadow:0 12px 40px rgba(30,58,95,0.22);border:1.5px solid transparent;display:flex;flex-direction:column;position:relative;overflow:hidden;">
+                <div style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.2);color:#fff;font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;border-radius:50px;">Best Value</div>
+                <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#A8D8EA;margin-bottom:12px;">Family</div>
+                <div style="font-size:46px;font-weight:900;color:#fff;line-height:1;">$11<span style="font-size:16px;font-weight:500;color:rgba(255,255,255,0.6);">/mo</span></div>
+                <div style="font-size:13px;color:#A8D8EA;font-weight:600;margin-top:6px;margin-bottom:28px;">after 1-month free trial</div>
+
+                <ul style="list-style:none;padding:0;margin:0 0 32px;display:flex;flex-direction:column;gap:12px;text-align:left;">
+                    <li style="display:flex;align-items:center;gap:10px;font-size:15px;color:rgba(255,255,255,0.9);">
+                        <span style="color:#30D158;font-size:17px;">✓</span> Everything in Individual
+                    </li>
+                    <li style="display:flex;align-items:center;gap:10px;font-size:15px;color:rgba(255,255,255,0.9);">
+                        <span style="color:#30D158;font-size:17px;">✓</span> Up to 6 family members
+                    </li>
+                    <li style="display:flex;align-items:center;gap:10px;font-size:15px;color:rgba(255,255,255,0.9);">
+                        <span style="color:#30D158;font-size:17px;">✓</span> Shared family competitions
+                    </li>
+                    <li style="display:flex;align-items:center;gap:10px;font-size:15px;color:rgba(255,255,255,0.9);">
+                        <span style="color:#30D158;font-size:17px;">✓</span> Under $2/person per month
+                    </li>
+                </ul>
+
+                <a href="#download" style="display:block;text-align:center;background:#fff;color:#1E3A5F;font-weight:700;font-size:16px;padding:14px 24px;border-radius:50px;text-decoration:none;margin-top:auto;transition:opacity 0.2s;">
+                    Start Free Trial
+                </a>
+            </div>
+
+        </div>
+
+        <p style="margin-top:28px;font-size:13px;color:#7a9ab8;">Cancel anytime. No charges during your free month. Subscription renews monthly.</p>
+    </div>
+</section>
+
+<!-- CTA with photo background -->
+<section class="cta-section" id="download">
+    <div class="cta-section-bg">
+        <!-- Photo: people cheering with arms raised outdoors — Unsplash by Zachary Nelson -->
+        <img
+            src="https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=1600&q=80"
+            alt="People celebrating outdoors with arms raised"
+            loading="lazy"
+        />
+        <div class="cta-section-bg-overlay"></div>
+    </div>
+    <div class="cta-section-content">
+        <h2>Who are you going to challenge?</h2>
+        <p>Download Bazee free and send your first challenge today. Your group chat is waiting.</p>
+        <a href="#" class="app-store-btn">
+            <svg viewBox="0 0 24 24" fill="#1E3A5F" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+            </svg>
+            Download on the App Store
+        </a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <span class="footer-logo">Bazee</span>
+    <div class="footer-links">
+        <a href="bazee-privacy-policy.html">Privacy Policy</a>
+        <a href="mailto:support@bazeeapp.com">Support</a>
+    </div>
+    <span>© 2026 Bazee. All rights reserved.</span>
+</footer>
+
+</body>
+</html>
