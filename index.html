@@ -3,915 +3,708 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bazee – Move More. Together.</title>
+    <title>Bazee: Activity Ring Challenges &amp; Fasting Tracker (Free)</title>
+    <meta name="description" content="Free iPhone app that turns Apple Activity Rings into friendly competitions with family and friends. Live leaderboards, fasting tracker, no subscription.">
+    <link rel="canonical" href="https://bazee.app/">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#F0F8FF">
+    <meta name="apple-itunes-app" content="app-id=6759181286">
+    <meta name="author" content="Deepak Maganti">
+
+    <!-- Open Graph / Twitter -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Bazee">
+    <meta property="og:title" content="Bazee: Activity Ring Challenges &amp; Fasting Tracker">
+    <meta property="og:description" content="Challenge friends and family to close their Activity Rings. Live leaderboards and a fasting tracker. Free on the App Store.">
+    <meta property="og:url" content="https://bazee.app/">
+    <meta property="og:image" content="https://bazee.app/assets/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Bazee app screens showing a live leaderboard and Activity Rings">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bazee: Activity Ring Challenges &amp; Fasting Tracker">
+    <meta name="twitter:description" content="Challenge friends and family to close their Activity Rings. Free on the App Store.">
+    <meta name="twitter:image" content="https://bazee.app/assets/og-image.jpg">
+
+    <!-- Icons -->
+    <link rel="icon" href="favicon.ico" sizes="48x48">
+    <link rel="icon" type="image/png" href="assets/icon-192.png" sizes="192x192">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+    <link rel="preload" as="image" href="assets/phone-leaderboard.webp" type="image/webp">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://bazee.app/#website",
+          "url": "https://bazee.app/",
+          "name": "Bazee",
+          "inLanguage": "en"
+        },
+        {
+          "@type": "MobileApplication",
+          "@id": "https://bazee.app/#app",
+          "name": "Bazee",
+          "alternateName": "Bazee: Activity Ring Challenges",
+          "description": "Bazee turns Apple Activity Rings into friendly competitions with family and friends. Create a competition, share a code, and watch a live leaderboard. Includes an intermittent fasting tracker with metabolic phases and streaks.",
+          "url": "https://bazee.app/",
+          "applicationCategory": "HealthApplication",
+          "operatingSystem": "iOS 18.6 or later",
+          "downloadUrl": "https://apps.apple.com/us/app/bazee/id6759181286",
+          "installUrl": "https://apps.apple.com/us/app/bazee/id6759181286",
+          "image": "https://bazee.app/assets/og-image.jpg",
+          "screenshot": [
+            "https://bazee.app/assets/phone-leaderboard.webp",
+            "https://bazee.app/assets/phone-activity.webp",
+            "https://bazee.app/assets/phone-fasting.webp"
+          ],
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+          "author": { "@type": "Person", "name": "Deepak Maganti" }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Is Bazee really free?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Yes. Bazee is free to download and free to use, with no subscription and no paywall." }
+            },
+            {
+              "@type": "Question",
+              "name": "Do I need an Apple Watch to use Bazee?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Bazee reads your Move, Exercise and Stand data from Apple Health. An Apple Watch records all three rings most accurately, so we recommend one for the best experience." }
+            },
+            {
+              "@type": "Question",
+              "name": "How are points scored?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Each ring earns 1 point for every 1% of your goal, so closing all three rings is worth 300 points. Going beyond your goals earns more, up to 600 points per day." }
+            },
+            {
+              "@type": "Question",
+              "name": "How do I invite friends and family?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Create a competition, choose the start and end dates, then share the 6-character invite code. Friends enter the code to join before the competition starts." }
+            },
+            {
+              "@type": "Question",
+              "name": "What health data does Bazee share?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Only your display name and daily points are shared with the people in your competitions. Your detailed health data stays on your own devices and in your private iCloud." }
+            },
+            {
+              "@type": "Question",
+              "name": "How does the fasting tracker work?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Set a fasting schedule for each day of the week, start a fast, and watch the ring move through four phases: Digestion, Glycogen, Fat Mobilization and Ketogenic. Bazee also tracks your streaks and history." }
+            },
+            {
+              "@type": "Question",
+              "name": "Is there an Android version of Bazee?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Not at the moment. Bazee is built for iPhone and Apple Health and requires iOS 18.6 or later." }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         :root {
             --ocean: #1E3A5F;
             --sky: #4A90E2;
             --mist: #A8D8EA;
             --ice: #F0F8FF;
+            --text: #3d5670;
+            --muted: #4f6d8a;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Rounded', 'SF Pro Text', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Rounded', 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
             background: var(--ice);
             color: var(--ocean);
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img { max-width: 100%; height: auto; }
+        a:focus-visible, summary:focus-visible { outline: 3px solid var(--sky); outline-offset: 3px; border-radius: 8px; }
+
+        .skip-link {
+            position: absolute; left: 16px; top: -60px; z-index: 200;
+            background: var(--ocean); color: #fff; padding: 10px 18px; border-radius: 10px; text-decoration: none; font-weight: 600;
+        }
+        .skip-link:focus { top: 12px; }
+
+        .grad-text {
+            background: linear-gradient(135deg, var(--ocean), var(--sky));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
 
         /* ─── Nav ─── */
-        nav {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 40px;
+        header.site-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 12px 40px;
             background: rgba(240, 248, 255, 0.88);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
             border-bottom: 1px solid rgba(74, 144, 226, 0.15);
         }
-
-        .nav-logo {
-            font-size: 24px;
-            font-weight: 800;
-            background: linear-gradient(90deg, var(--ocean), var(--sky));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
+        .nav-brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+        .nav-brand img { width: 34px; height: 34px; border-radius: 9px; box-shadow: 0 2px 8px rgba(30,58,95,0.25); }
+        .nav-logo { font-size: 24px; font-weight: 800; }
+        .nav-links { display: flex; align-items: center; gap: 28px; }
+        .nav-links a.link { text-decoration: none; font-size: 15px; font-weight: 600; color: var(--ocean); opacity: .75; transition: opacity .2s; }
+        .nav-links a.link:hover { opacity: 1; }
         .nav-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            display: inline-flex; align-items: center; gap: 8px;
             background: linear-gradient(135deg, var(--sky), var(--ocean));
-            color: #fff;
-            text-decoration: none;
-            padding: 10px 22px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 15px;
-            transition: opacity 0.2s;
+            color: #fff; text-decoration: none; padding: 10px 22px; border-radius: 50px;
+            font-weight: 600; font-size: 15px; transition: opacity .2s;
         }
-        .nav-cta:hover { opacity: 0.85; }
+        .nav-cta:hover { opacity: .85; }
 
         /* ─── Hero ─── */
         .hero {
             min-height: 100vh;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
+            display: grid; grid-template-columns: 1.05fr 1fr; align-items: center;
             padding-top: 80px;
-            background: linear-gradient(160deg, #F0F8FF 0%, #E0F2FA 60%, #C8E8F5 100%);
+            background:
+                radial-gradient(circle at 78% 30%, rgba(74,144,226,0.22) 0%, transparent 46%),
+                radial-gradient(circle at 10% 90%, rgba(168,216,234,0.55) 0%, transparent 40%),
+                linear-gradient(160deg, #F0F8FF 0%, #E0F2FA 60%, #C8E8F5 100%);
             overflow: hidden;
         }
-
-        .hero-text {
-            padding: 80px 56px 80px 64px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
+        .hero-text { padding: 72px 40px 72px 64px; display: flex; flex-direction: column; align-items: flex-start; }
         .badge {
-            display: inline-block;
-            background: rgba(74, 144, 226, 0.12);
-            color: var(--sky);
-            border: 1px solid rgba(74,144,226,0.3);
-            border-radius: 50px;
-            padding: 6px 18px;
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            margin-bottom: 24px;
+            display: inline-block; background: rgba(74,144,226,0.12); color: #2f6fc0;
+            border: 1px solid rgba(74,144,226,0.3); border-radius: 50px; padding: 6px 18px;
+            font-size: 13px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; margin-bottom: 24px;
         }
-
         .hero h1 {
-            font-size: clamp(38px, 4.5vw, 68px);
-            font-weight: 900;
-            line-height: 1.05;
+            font-size: clamp(36px, 3.9vw, 62px); font-weight: 900; line-height: 1.06; margin-bottom: 24px;
             background: linear-gradient(135deg, var(--ocean) 0%, var(--sky) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 24px;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
-
-        .hero-text p {
-            font-size: clamp(16px, 1.8vw, 20px);
-            color: #4a6b8a;
-            line-height: 1.65;
-            margin-bottom: 40px;
-            max-width: 460px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
+        .hero-text p { font-size: clamp(16px, 1.8vw, 20px); color: var(--muted); line-height: 1.65; margin-bottom: 36px; max-width: 500px; }
+        .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
         .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: linear-gradient(135deg, var(--sky), var(--ocean));
-            color: #fff;
-            text-decoration: none;
-            padding: 16px 32px;
-            border-radius: 50px;
-            font-size: 17px;
-            font-weight: 700;
-            box-shadow: 0 8px 32px rgba(74,144,226,0.35);
-            transition: transform 0.2s, box-shadow 0.2s;
+            display: inline-flex; align-items: center; gap: 10px;
+            background: linear-gradient(135deg, var(--sky), var(--ocean)); color: #fff; text-decoration: none;
+            padding: 16px 32px; border-radius: 50px; font-size: 17px; font-weight: 700;
+            box-shadow: 0 8px 32px rgba(74,144,226,0.35); transition: transform .2s, box-shadow .2s;
         }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(74,144,226,0.45); }
-
         .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(255,255,255,0.7);
-            color: var(--ocean);
-            text-decoration: none;
-            padding: 16px 32px;
-            border-radius: 50px;
-            font-size: 17px;
-            font-weight: 600;
-            border: 1.5px solid rgba(74,144,226,0.25);
-            transition: background 0.2s;
+            display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.75); color: var(--ocean);
+            text-decoration: none; padding: 16px 32px; border-radius: 50px; font-size: 17px; font-weight: 600;
+            border: 1.5px solid rgba(74,144,226,0.25); transition: background .2s;
         }
-        .btn-secondary:hover { background: rgba(255,255,255,0.95); }
+        .btn-secondary:hover { background: #fff; }
+        .hero-meta { margin-top: 22px; font-size: 14px; color: var(--muted); display: flex; gap: 18px; flex-wrap: wrap; }
+        .hero-meta span::before { content: "✓ "; color: #1f9d4c; font-weight: 800; }
 
-        /* Hero photo side */
-        .hero-photo {
-            position: relative;
-            height: 100vh;
-            min-height: 600px;
+        /* Phone mockups */
+        .hero-visual { position: relative; height: min(760px, 88vh); display: flex; align-items: center; justify-content: center; }
+        .phone {
+            background: #0c1727; border-radius: 46px; padding: 9px;
+            box-shadow: 0 40px 80px rgba(30,58,95,0.35), 0 0 0 1.5px rgba(255,255,255,0.12) inset;
         }
+        .phone img { display: block; width: 100%; border-radius: 37px; }
+        .phone-front { width: 292px; position: relative; z-index: 2; transform: translateX(-38px); animation: float 6s ease-in-out infinite; }
+        .phone-back { width: 250px; position: absolute; z-index: 1; right: 9%; top: 11%; transform: rotate(7deg); opacity: .96; }
+        @keyframes float { 0%,100% { transform: translate(-38px,0); } 50% { transform: translate(-38px,-12px); } }
 
-        .hero-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center top;
-        }
-
-        .hero-photo-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to right, rgba(224,242,250,0.6) 0%, transparent 30%);
-        }
-
-        /* Floating ring widget */
         .ring-widget {
-            position: absolute;
-            bottom: 48px;
-            left: -40px;
-            background: rgba(255,255,255,0.92);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-radius: 24px;
-            padding: 20px 24px;
-            box-shadow: 0 16px 48px rgba(30,58,95,0.18);
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            border: 1px solid rgba(255,255,255,0.9);
-            z-index: 10;
+            position: absolute; bottom: 9%; left: 2%; z-index: 3;
+            background: rgba(255,255,255,0.94); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+            border-radius: 24px; padding: 16px 22px; box-shadow: 0 16px 48px rgba(30,58,95,0.2);
+            display: flex; align-items: center; gap: 16px; border: 1px solid rgba(255,255,255,0.9);
         }
-
-        .ring-widget svg { width: 80px; height: 80px; flex-shrink: 0; }
-
-        .ring-widget-text { }
-        .ring-widget-text .score { font-size: 26px; font-weight: 900; color: var(--ocean); line-height: 1; }
-        .ring-widget-text .sublabel { font-size: 12px; color: #7a9ab8; margin-top: 2px; font-weight: 500; }
-        .ring-widget-text .names { font-size: 13px; color: var(--sky); font-weight: 600; margin-top: 6px; }
+        .ring-widget svg { width: 76px; height: 76px; flex-shrink: 0; }
+        .ring-widget .fill { animation: ringfill 1.8s cubic-bezier(.2,.7,.2,1) .4s both; }
+        @keyframes ringfill { from { stroke-dashoffset: var(--c); } }
+        .ring-widget .score { font-size: 26px; font-weight: 900; color: var(--ocean); line-height: 1; }
+        .ring-widget .sublabel { font-size: 12px; color: var(--muted); margin-top: 2px; font-weight: 500; }
+        .ring-widget .names { font-size: 13px; color: #2f6fc0; font-weight: 700; margin-top: 6px; }
 
         /* ─── Stats ─── */
         .stats-bar {
             background: linear-gradient(135deg, var(--ocean), #2a5280);
-            padding: 48px 40px;
-            display: flex;
-            justify-content: center;
-            gap: clamp(32px, 8vw, 96px);
-            flex-wrap: wrap;
+            padding: 48px 40px; display: flex; justify-content: center; gap: clamp(32px, 8vw, 96px); flex-wrap: wrap;
         }
-
         .stat { text-align: center; color: #fff; display: flex; flex-direction: column; align-items: center; }
-        .stat .num {
-            width: 64px;
-            height: 64px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255,255,255,0.12);
-            border-radius: 18px;
-            margin-bottom: 4px;
-        }
+        .stat .num { width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.12); border-radius: 18px; margin-bottom: 4px; }
         .stat .num svg { width: 34px; height: 34px; }
-        .stat .label { font-size: 13px; opacity: 0.65; margin-top: 6px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+        .stat .label { font-size: 13px; opacity: .8; margin-top: 6px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
 
         /* ─── Photo strip ─── */
-        .photo-strip {
-            display: grid;
-            grid-template-columns: 1.4fr 1fr 1fr;
-            height: 340px;
-            overflow: hidden;
-        }
-
-        .photo-strip-item {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .photo-strip-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
+        .photo-strip { display: grid; grid-template-columns: 1.4fr 1fr 1fr; height: 340px; overflow: hidden; }
+        .photo-strip-item { position: relative; overflow: hidden; }
+        .photo-strip-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
         .photo-strip-item:hover img { transform: scale(1.04); }
+        .photo-strip-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 20px; background: linear-gradient(to top, rgba(30,58,95,0.78) 0%, transparent 100%); color: #fff; font-size: 15px; font-weight: 700; }
 
-        .photo-strip-caption {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            padding: 20px;
-            background: linear-gradient(to top, rgba(30,58,95,0.75) 0%, transparent 100%);
-            color: #fff;
-            font-size: 15px;
-            font-weight: 700;
-        }
-
-        /* ─── Features ─── */
+        /* ─── Sections ─── */
         .section { padding: 96px 24px; max-width: 1100px; margin: 0 auto; }
-
+        .section-center { text-align: center; }
         .section-label {
-            display: inline-block;
-            background: rgba(74,144,226,0.1);
-            color: var(--sky);
-            border-radius: 50px;
-            padding: 5px 16px;
-            font-size: 12px;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            margin-bottom: 16px;
+            display: inline-block; background: rgba(74,144,226,0.1); color: #2f6fc0; border-radius: 50px;
+            padding: 5px 16px; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 16px;
         }
+        h2.title {
+            font-size: clamp(30px, 4vw, 48px); font-weight: 800; line-height: 1.15; margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--ocean), var(--sky)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+        .lede { font-size: 18px; color: var(--muted); line-height: 1.7; max-width: 560px; margin-bottom: 56px; }
+        .section-center .lede { margin-left: auto; margin-right: auto; }
 
-        .section h2 {
-            font-size: clamp(30px, 4vw, 48px);
-            font-weight: 800;
-            line-height: 1.15;
-            margin-bottom: 16px;
-            background: linear-gradient(135deg, var(--ocean), var(--sky));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        /* Screenshot gallery */
+        .shots-wrap { background: linear-gradient(180deg, var(--ice) 0%, #E4F1FA 100%); padding: 96px 0 72px; }
+        .shots {
+            display: flex; gap: 26px; overflow-x: auto; scroll-snap-type: x mandatory;
+            padding: 12px max(24px, calc((100% - 1240px) / 2)) 36px; -webkit-overflow-scrolling: touch;
         }
+        .shot { flex: 0 0 216px; scroll-snap-align: center; text-align: center; }
+        .shot .phone { border-radius: 34px; padding: 7px; box-shadow: 0 24px 50px rgba(30,58,95,0.26), 0 0 0 1.5px rgba(255,255,255,0.1) inset; transition: transform .3s; }
+        .shot .phone img { border-radius: 28px; }
+        .shot:hover .phone { transform: translateY(-8px); }
+        .shot h3 { margin-top: 22px; font-size: 17px; font-weight: 800; color: var(--ocean); }
+        .shot p { margin-top: 6px; font-size: 14px; color: var(--muted); line-height: 1.5; }
 
-        .section > p {
-            font-size: 18px;
-            color: #4a6b8a;
-            line-height: 1.7;
-            max-width: 560px;
-            margin-bottom: 56px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-        }
-
-        .feature-card {
-            background: #fff;
-            border-radius: 24px;
-            padding: 32px;
-            box-shadow: 0 4px 24px rgba(30,58,95,0.07);
-            border: 1px solid rgba(74,144,226,0.1);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
+        /* Features */
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
+        .feature-card { background: #fff; border-radius: 24px; padding: 32px; box-shadow: 0 4px 24px rgba(30,58,95,0.07); border: 1px solid rgba(74,144,226,0.1); transition: transform .2s, box-shadow .2s; }
         .feature-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(30,58,95,0.12); }
-
-        .feature-icon {
-            width: 56px; height: 56px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            margin-bottom: 20px;
-        }
-
+        .feature-icon { width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 20px; }
         .icon-blue  { background: linear-gradient(135deg, #E8F4FF, #C8E4FF); }
+        .icon-rings { width: auto; padding: 0 16px; font-size: 18px; white-space: nowrap; letter-spacing: 2px; }
         .icon-green { background: linear-gradient(135deg, #E8FFF0, #C8FFD8); }
         .icon-pink  { background: linear-gradient(135deg, #FFE8F4, #FFD0E8); }
         .icon-amber { background: linear-gradient(135deg, #FFF8E8, #FFE8C0); }
-
         .feature-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 10px; color: var(--ocean); }
-        .feature-card p  { font-size: 15px; color: #5a7a9a; line-height: 1.6; }
+        .feature-card p { font-size: 15px; color: var(--text); line-height: 1.6; }
 
-        /* ─── How it works ─── */
-        .how-section {
-            background: linear-gradient(160deg, #E8F4FB 0%, var(--ice) 100%);
-            padding: 96px 24px;
-        }
+        /* How it works */
+        .how-section { background: linear-gradient(160deg, #E8F4FB 0%, var(--ice) 100%); padding: 96px 24px; }
         .how-inner { max-width: 1100px; margin: 0 auto; }
-
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 32px;
-            margin-top: 56px;
-        }
-
+        .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px; margin-top: 56px; }
         .step { text-align: center; padding: 16px; }
-        .step-num {
-            width: 52px; height: 52px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--sky), var(--ocean));
-            color: #fff;
-            font-size: 22px;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            box-shadow: 0 4px 16px rgba(74,144,226,0.4);
-        }
+        .step-num { width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg, var(--sky), var(--ocean)); color: #fff; font-size: 22px; font-weight: 800; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 4px 16px rgba(74,144,226,0.4); }
         .step h3 { font-size: 18px; font-weight: 700; color: var(--ocean); margin-bottom: 8px; }
-        .step p  { font-size: 15px; color: #5a7a9a; line-height: 1.6; }
+        .step p { font-size: 15px; color: var(--text); line-height: 1.6; }
 
-        /* ─── Photo cards ("Who is this for") ─── */
-        .audience-section {
-            padding: 80px 24px 0;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .audience-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            margin-top: 48px;
-        }
-
-        .audience-card {
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 8px 32px rgba(30,58,95,0.1);
-            background: #fff;
-            transition: transform 0.25s, box-shadow 0.25s;
-        }
+        /* Audience */
+        .audience-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 8px; }
+        .audience-card { border-radius: 24px; overflow: hidden; box-shadow: 0 8px 32px rgba(30,58,95,0.1); background: #fff; transition: transform .25s, box-shadow .25s; }
         .audience-card:hover { transform: translateY(-6px); box-shadow: 0 20px 48px rgba(30,58,95,0.16); }
-
-        .audience-card-photo {
-            position: relative;
-            height: 240px;
-            overflow: hidden;
-        }
-
-        .audience-card-photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
+        .audience-card-photo { position: relative; height: 240px; overflow: hidden; }
+        .audience-card-photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
         .audience-card:hover .audience-card-photo img { transform: scale(1.05); }
+        .audience-card-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 50%, rgba(30,58,95,0.35) 100%); }
+        .audience-card-body { padding: 24px 28px 28px; }
+        .audience-card-body h3 { font-size: 22px; font-weight: 800; color: var(--ocean); margin-bottom: 8px; }
+        .audience-card-body p { font-size: 15px; color: var(--text); line-height: 1.65; }
 
-        .audience-card-photo-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, transparent 50%, rgba(30,58,95,0.35) 100%);
+        /* Free section */
+        .free-section { padding: 88px 24px; background: linear-gradient(160deg, #E8F4FB 0%, #F0F8FF 100%); }
+        .free-card {
+            max-width: 860px; margin: 0 auto; text-align: center; color: #fff;
+            background: linear-gradient(135deg, var(--ocean), #2a5280); border-radius: 32px; padding: 56px 40px;
+            box-shadow: 0 24px 64px rgba(30,58,95,0.28); position: relative; overflow: hidden;
         }
+        .free-card::before { content: ""; position: absolute; width: 380px; height: 380px; right: -120px; top: -160px; border-radius: 50%; background: radial-gradient(circle, rgba(74,144,226,0.55), transparent 70%); }
+        .free-card .price { position: relative; font-size: clamp(64px, 10vw, 104px); font-weight: 900; line-height: 1; background: linear-gradient(90deg, var(--mist), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .free-card h2 { position: relative; font-size: clamp(24px, 3vw, 34px); margin: 10px 0 12px; font-weight: 800; }
+        .free-card p.sub { position: relative; color: rgba(255,255,255,0.82); font-size: 17px; max-width: 520px; margin: 0 auto 30px; line-height: 1.6; }
+        .free-list { position: relative; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px 24px; text-align: left; max-width: 640px; margin: 0 auto 34px; }
+        .free-list li { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; color: rgba(255,255,255,0.92); line-height: 1.45; }
+        .free-list li::before { content: "✓"; color: #5FE08A; font-weight: 800; }
 
-        .audience-card-body {
-            padding: 24px 28px 28px;
-        }
-
-        .audience-card-body h3 {
-            font-size: 22px;
-            font-weight: 800;
-            color: var(--ocean);
-            margin-bottom: 8px;
-        }
-
-        .audience-card-body p {
-            font-size: 15px;
-            color: #5a7a9a;
-            line-height: 1.65;
-        }
-
-        /* ─── Privacy callout ─── */
-        .privacy-wrap {
-            padding: 64px 24px 80px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .privacy-callout {
-            background: #fff;
-            border-radius: 24px;
-            padding: 40px;
-            text-align: center;
-            max-width: 640px;
-            margin: 0 auto;
-            box-shadow: 0 4px 24px rgba(30,58,95,0.07);
-            border: 1px solid rgba(74,144,226,0.1);
-        }
+        /* Privacy */
+        .privacy-wrap { padding: 72px 24px 80px; max-width: 1100px; margin: 0 auto; }
+        .privacy-callout { background: #fff; border-radius: 24px; padding: 40px; text-align: center; max-width: 660px; margin: 0 auto; box-shadow: 0 4px 24px rgba(30,58,95,0.07); border: 1px solid rgba(74,144,226,0.1); }
         .privacy-callout .lock { font-size: 40px; margin-bottom: 16px; }
-        .privacy-callout h3 { font-size: 22px; font-weight: 700; color: var(--ocean); margin-bottom: 10px; }
-        .privacy-callout p { font-size: 15px; color: #5a7a9a; line-height: 1.6; }
-        .privacy-callout a { color: var(--sky); text-decoration: none; font-weight: 600; }
+        .privacy-callout h2 { font-size: 22px; font-weight: 700; color: var(--ocean); margin-bottom: 10px; }
+        .privacy-callout p { font-size: 15px; color: var(--text); line-height: 1.6; }
+        .privacy-callout a { color: #2f6fc0; text-decoration: none; font-weight: 700; }
         .privacy-callout a:hover { text-decoration: underline; }
 
-        /* ─── CTA Section ─── */
-        .cta-section {
-            position: relative;
-            padding: 120px 24px;
-            text-align: center;
-            color: #fff;
-            overflow: hidden;
-        }
+        /* FAQ */
+        .faq { max-width: 820px; margin: 0 auto; text-align: left; }
+        .faq details { background: #fff; border-radius: 18px; border: 1px solid rgba(74,144,226,0.14); box-shadow: 0 2px 14px rgba(30,58,95,0.05); margin-bottom: 14px; overflow: hidden; }
+        .faq summary { list-style: none; cursor: pointer; padding: 20px 56px 20px 24px; font-size: 17px; font-weight: 700; color: var(--ocean); position: relative; }
+        .faq summary::-webkit-details-marker { display: none; }
+        .faq summary::after { content: "+"; position: absolute; right: 24px; top: 50%; transform: translateY(-50%); font-size: 26px; font-weight: 500; color: var(--sky); transition: transform .2s; }
+        .faq details[open] summary::after { content: "–"; }
+        .faq details p { padding: 0 24px 22px; font-size: 15.5px; color: var(--text); line-height: 1.7; }
 
-        .cta-section-bg {
-            position: absolute;
-            inset: 0;
-        }
-
-        .cta-section-bg img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center 30%;
-        }
-
-        .cta-section-bg-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(30,58,95,0.88) 0%, rgba(42,82,128,0.82) 100%);
-        }
-
-        .cta-section-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-section h2 {
-            font-size: clamp(32px, 4vw, 56px);
-            font-weight: 900;
-            margin-bottom: 16px;
-            background: linear-gradient(90deg, var(--mist), #fff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .cta-section p {
-            font-size: 19px;
-            opacity: 0.8;
-            margin-bottom: 40px;
-            max-width: 480px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
-        }
-
-        .app-store-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background: #fff;
-            color: var(--ocean);
-            text-decoration: none;
-            padding: 18px 36px;
-            border-radius: 18px;
-            font-weight: 700;
-            font-size: 17px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-            transition: transform 0.2s;
-        }
+        /* CTA */
+        .cta-section { position: relative; padding: 120px 24px; text-align: center; color: #fff; overflow: hidden; }
+        .cta-section-bg { position: absolute; inset: 0; }
+        .cta-section-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
+        .cta-section-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(30,58,95,0.9) 0%, rgba(42,82,128,0.84) 100%); }
+        .cta-section-content { position: relative; z-index: 1; }
+        .cta-section h2 { font-size: clamp(32px, 4vw, 56px); font-weight: 900; margin-bottom: 16px; background: linear-gradient(90deg, var(--mist), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .cta-section p { font-size: 19px; opacity: .9; margin: 0 auto 40px; max-width: 480px; line-height: 1.6; }
+        .app-store-btn { display: inline-flex; align-items: center; gap: 12px; background: #fff; color: var(--ocean); text-decoration: none; padding: 18px 36px; border-radius: 18px; font-weight: 700; font-size: 17px; box-shadow: 0 8px 32px rgba(0,0,0,0.25); transition: transform .2s; }
         .app-store-btn:hover { transform: translateY(-2px); }
         .app-store-btn svg { width: 28px; height: 28px; }
 
-        /* ─── Footer ─── */
-        footer {
-            background: var(--ocean);
-            color: rgba(255,255,255,0.6);
-            padding: 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
-            font-size: 14px;
-        }
+        /* Footer */
+        footer { background: var(--ocean); color: rgba(255,255,255,0.75); padding: 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 14px; }
         footer a { color: var(--mist); text-decoration: none; }
         footer a:hover { text-decoration: underline; }
-        .footer-links { display: flex; gap: 24px; }
+        .footer-links { display: flex; gap: 24px; flex-wrap: wrap; }
         .footer-logo { font-weight: 800; font-size: 20px; color: #fff; }
 
+        /* Reveal on scroll (only when JS is running) */
+        .js .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s ease, transform .7s ease; }
+        .js .reveal.in { opacity: 1; transform: none; }
+
         /* ─── Responsive ─── */
-        @media (max-width: 768px) {
-            .hero {
-                grid-template-columns: 1fr;
-                min-height: auto;
-            }
-            .hero-text {
-                padding: 100px 28px 40px;
-                align-items: center;
-                text-align: center;
-            }
+        @media (max-width: 900px) {
+            header.site-nav { padding: 10px 20px; }
+            .nav-links a.link { display: none; }
+            .hero { grid-template-columns: 1fr; min-height: auto; }
+            .hero-text { padding: 104px 28px 8px; align-items: center; text-align: center; }
             .hero-text p { margin-left: auto; margin-right: auto; }
-            .hero-buttons { justify-content: center; }
-            .hero-photo { height: 360px; min-height: unset; }
-            .ring-widget { left: 16px; right: 16px; bottom: 16px; }
+            .hero-buttons, .hero-meta { justify-content: center; }
+            .hero-visual { height: 560px; margin-top: 16px; }
+            .phone-front { width: 232px; }
+            .phone-back { width: 206px; right: 2%; top: 8%; }
+            .ring-widget { left: 4%; bottom: 4%; padding: 12px 16px; }
+            .ring-widget svg { width: 56px; height: 56px; }
+            .ring-widget .score { font-size: 21px; }
             .photo-strip { grid-template-columns: 1fr 1fr; height: 260px; }
             .photo-strip-item:last-child { display: none; }
+            .section, .how-section { padding-top: 72px; padding-bottom: 72px; }
+            .shots-wrap { padding: 72px 0 56px; }
+        }
+        @media (max-width: 480px) {
+            .phone-front { width: 208px; }
+            .phone-back { width: 176px; }
+            .free-card { padding: 44px 24px; }
+            footer { justify-content: center; text-align: center; padding: 32px 20px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .phone-front { animation: none; }
+            .ring-widget .fill { animation: none; }
+            .js .reveal { opacity: 1; transform: none; transition: none; }
+            * { transition-duration: 0.01ms !important; }
         }
     </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
 
-<!-- Nav -->
-<nav>
-    <span class="nav-logo">Bazee</span>
-    <div style="display:flex;align-items:center;gap:28px;">
-        <a href="#features" style="text-decoration:none;font-size:15px;font-weight:600;color:#1E3A5F;opacity:0.75;transition:opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.75">Features</a>
-        <a href="#pricing" style="text-decoration:none;font-size:15px;font-weight:600;color:#1E3A5F;opacity:0.75;transition:opacity 0.2s;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.75">Pricing</a>
-        <a href="#download" class="nav-cta">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+<header class="site-nav">
+    <a class="nav-brand" href="index.html" aria-label="Bazee home">
+        <img src="assets/icon-64.png" alt="" width="34" height="34">
+        <span class="nav-logo grad-text">Bazee</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+        <a class="link" href="#screens">Screenshots</a>
+        <a class="link" href="#features">Features</a>
+        <a class="link" href="#faq">FAQ</a>
+        <a href="https://apps.apple.com/us/app/bazee/id6759181286" class="nav-cta" rel="noopener">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
             Get the App
         </a>
-    </div>
-</nav>
+    </nav>
+</header>
 
-<!-- Hero: split layout -->
-<section class="hero">
+<main id="main">
+
+<!-- Hero -->
+<section class="hero" aria-labelledby="hero-title">
     <div class="hero-text">
-        <div class="badge">Free on the App Store</div>
-        <h1>Move more.<br>Cheer each other on.<br>Close those rings.</h1>
-        <p>Bazee is the fun, pressure-free way to get moving with the people you love. No judgment, no gym-bro energy — just you, your family, and your friends cheering each other on every day.</p>
+        <div class="badge">Free Activity Ring app for iPhone</div>
+        <h1 id="hero-title">Move more.<br>Cheer each other on.<br>Close those rings.</h1>
+        <p>Bazee turns your Apple Activity Rings into friendly competitions with family, friends and coworkers. Live leaderboards, daily points and a built-in fasting tracker, all without the gym-bro energy.</p>
         <div class="hero-buttons">
-            <a href="#download" class="btn-primary">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                Try Bazee Free
+            <a href="https://apps.apple.com/us/app/bazee/id6759181286" class="btn-primary" rel="noopener">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                Download Free
             </a>
-            <a href="#features" class="btn-secondary">How it works ↓</a>
+            <a href="#screens" class="btn-secondary">See it in action ↓</a>
+        </div>
+        <div class="hero-meta">
+            <span>No subscription</span>
+            <span>Sign in with Apple</span>
+            <span>Works with Apple Health</span>
         </div>
     </div>
 
-    <div class="hero-photo">
-        <!-- Photo: group of friends laughing outdoors on a walk — Unsplash by Alexis Brown -->
-        <img
-            src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=82"
-            alt="Friends laughing and walking outdoors together"
-            loading="eager"
-        />
-        <div class="hero-photo-overlay"></div>
+    <div class="hero-visual">
+        <div class="phone phone-back" aria-hidden="true">
+            <img src="assets/phone-activity.webp" alt="" width="600" height="1303" loading="eager">
+        </div>
+        <div class="phone phone-front">
+            <img src="assets/phone-leaderboard.webp" alt="Bazee leaderboard showing five friends ranked by points in a family competition" width="600" height="1303" loading="eager" fetchpriority="high">
+        </div>
 
-        <!-- Floating ring widget -->
-        <div class="ring-widget">
+        <div class="ring-widget" aria-hidden="true">
             <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="40" cy="40" r="34" stroke="#FFE0E6" stroke-width="7"/>
-                <circle cx="40" cy="40" r="34" stroke="#FF375F" stroke-width="7"
-                        stroke-dasharray="213.6" stroke-dashoffset="43"
-                        stroke-linecap="round" transform="rotate(-90 40 40)"/>
+                <circle class="fill" style="--c:213.6" cx="40" cy="40" r="34" stroke="#FF375F" stroke-width="7" stroke-dasharray="213.6" stroke-dashoffset="43" stroke-linecap="round" transform="rotate(-90 40 40)"/>
                 <circle cx="40" cy="40" r="25" stroke="#D8F5E0" stroke-width="7"/>
-                <circle cx="40" cy="40" r="25" stroke="#30D158" stroke-width="7"
-                        stroke-dasharray="157" stroke-dashoffset="47"
-                        stroke-linecap="round" transform="rotate(-90 40 40)"/>
+                <circle class="fill" style="--c:157" cx="40" cy="40" r="25" stroke="#30D158" stroke-width="7" stroke-dasharray="157" stroke-dashoffset="47" stroke-linecap="round" transform="rotate(-90 40 40)"/>
                 <circle cx="40" cy="40" r="16" stroke="#D6F4FF" stroke-width="7"/>
-                <circle cx="40" cy="40" r="16" stroke="#32D2FF" stroke-width="7"
-                        stroke-dasharray="100.5" stroke-dashoffset="20"
-                        stroke-linecap="round" transform="rotate(-90 40 40)"/>
+                <circle class="fill" style="--c:100.5" cx="40" cy="40" r="16" stroke="#32D2FF" stroke-width="7" stroke-dasharray="100.5" stroke-dashoffset="20" stroke-linecap="round" transform="rotate(-90 40 40)"/>
             </svg>
-            <div class="ring-widget-text">
-                <div class="score">842 pts</div>
-                <div class="sublabel">Today's score</div>
-                <div class="names">You're 2nd 🔥 keep going!</div>
+            <div>
+                <div class="score">478 pts</div>
+                <div class="sublabel">Your score this week</div>
+                <div class="names">You're 2nd 🔥 34 to catch Priya</div>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Stats bar -->
-<div class="stats-bar">
+<div class="stats-bar reveal">
     <div class="stat">
         <div class="num">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#A8D8EA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                <circle cx="9" cy="7" r="4"/>
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-            </svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#A8D8EA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
         <div class="label">Family &amp; Friends</div>
     </div>
     <div class="stat">
         <div class="num">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#A8D8EA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
-            </svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#A8D8EA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
         </div>
         <div class="label">Zero Judgment</div>
     </div>
     <div class="stat">
         <div class="num">
-            <svg viewBox="0 0 36 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="6"  cy="12" r="5" stroke="#FF375F" stroke-width="2"/>
-                <circle cx="18" cy="12" r="5" stroke="#30D158" stroke-width="2"/>
-                <circle cx="30" cy="12" r="5" stroke="#0A84FF" stroke-width="2"/>
-            </svg>
+            <svg viewBox="0 0 36 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="6" cy="12" r="5" stroke="#FF375F" stroke-width="2"/><circle cx="18" cy="12" r="5" stroke="#30D158" stroke-width="2"/><circle cx="30" cy="12" r="5" stroke="#0A84FF" stroke-width="2"/></svg>
         </div>
         <div class="label">Three Rings, One Goal</div>
     </div>
     <div class="stat">
         <div class="num">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#A8D8EA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
-                <polyline points="16 7 22 7 22 13"/>
-            </svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#A8D8EA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
         </div>
         <div class="label">Celebrate Every Win</div>
     </div>
 </div>
 
+<!-- Screenshots -->
+<section class="shots-wrap" id="screens" aria-labelledby="screens-title">
+    <div class="section-center" style="padding:0 24px;">
+        <div class="section-label">Inside the app</div>
+        <h2 class="title" id="screens-title">See it in action</h2>
+        <p class="lede">A live leaderboard, animated rings, a fasting clock and badges worth bragging about.</p>
+    </div>
+    <div class="shots" role="list">
+        <figure class="shot reveal" role="listitem">
+            <div class="phone"><img src="assets/phone-leaderboard.webp" alt="Competition leaderboard with ranked participants and an invite code" width="600" height="1303" loading="lazy"></div>
+            <figcaption><h3>Live leaderboards</h3><p>See who's winning, updated through the day.</p></figcaption>
+        </figure>
+        <figure class="shot reveal" role="listitem">
+            <div class="phone"><img src="assets/phone-activity.webp" alt="Animated Move, Exercise and Stand rings with points for today" width="600" height="1303" loading="lazy"></div>
+            <figcaption><h3>Close your rings</h3><p>Move, Exercise and Stand turn into points.</p></figcaption>
+        </figure>
+        <figure class="shot reveal" role="listitem">
+            <div class="phone"><img src="assets/phone-fasting.webp" alt="Intermittent fasting clock showing the Glycogen phase and a six day streak" width="600" height="1303" loading="lazy"></div>
+            <figcaption><h3>Fasting tracker</h3><p>Four metabolic phases and streaks.</p></figcaption>
+        </figure>
+        <figure class="shot reveal" role="listitem">
+            <div class="phone"><img src="assets/phone-home.webp" alt="Home screen with daily coach message and a rivalry activity feed" width="600" height="1303" loading="lazy"></div>
+            <figcaption><h3>Friendly rivalry</h3><p>A feed that celebrates every rank change.</p></figcaption>
+        </figure>
+        <figure class="shot reveal" role="listitem">
+            <div class="phone"><img src="assets/phone-profile.webp" alt="Profile with gold, silver and bronze medals and earned badges" width="600" height="1303" loading="lazy"></div>
+            <figcaption><h3>Medals &amp; badges</h3><p>Stats that prove you showed up.</p></figcaption>
+        </figure>
+    </div>
+</section>
+
 <!-- Photo strip -->
 <div class="photo-strip">
     <div class="photo-strip-item">
         <!-- Photo: family biking together — Unsplash by Coen van den Broek -->
-        <img
-            src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=900&q=80"
-            alt="Family biking together outdoors"
-            loading="lazy"
-        />
+        <img src="https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=900&q=80" alt="Family biking together outdoors" width="900" height="600" loading="lazy">
         <div class="photo-strip-caption">Every step together counts 💛</div>
     </div>
     <div class="photo-strip-item">
         <!-- Photo: friends on a morning walk — Unsplash by Boxed Water Is Better -->
-        <img
-            src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=600&q=80"
-            alt="Friends walking outdoors in the morning"
-            loading="lazy"
-        />
+        <img src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=600&q=80" alt="Friends walking outdoors in the morning" width="600" height="600" loading="lazy">
         <div class="photo-strip-caption">Morning walks hit different 🌤️</div>
     </div>
     <div class="photo-strip-item">
         <!-- Photo: group celebrating outdoors — Unsplash by Felix Rostig -->
-        <img
-            src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=600&q=80"
-            alt="Group of people celebrating outdoors"
-            loading="lazy"
-        />
+        <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=600&q=80" alt="Group of people celebrating outdoors" width="600" height="600" loading="lazy">
         <div class="photo-strip-caption">Rings closed. Day won. 🎊</div>
     </div>
 </div>
 
 <!-- Features -->
-<section class="section" id="features">
+<section class="section" id="features" aria-labelledby="features-title">
     <div class="section-label">Why Bazee</div>
-    <h2>Moving is better<br>with people you love</h2>
-    <p>Whether it's your mom, your college roommate, or your whole family group chat — Bazee gives everyone a reason to get up and move today.</p>
+    <h2 class="title" id="features-title">Moving is better<br>with people you love</h2>
+    <p class="lede">Whether it's your mom, your college roommate, or your whole family group chat, Bazee gives everyone a reason to get up and move today.</p>
 
     <div class="features-grid">
-        <div class="feature-card">
-            <div class="feature-icon icon-pink">🏆</div>
+        <article class="feature-card reveal">
+            <div class="feature-icon icon-pink" aria-hidden="true">🏆</div>
             <h3>Friendly Daily Challenges</h3>
-            <p>Start a challenge with anyone. See how everyone's doing throughout the day and root each other on — no trash talk required (but welcome).</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon icon-blue">🔴🟢🔵</div>
+            <p>Start a competition with anyone. See how everyone's doing throughout the day and root each other on. No trash talk required (but welcome).</p>
+        </article>
+        <article class="feature-card reveal">
+            <div class="feature-icon icon-blue icon-rings" aria-hidden="true">🔴🟢🔵</div>
             <h3>Close Your Three Rings</h3>
-            <p>Your Apple Watch tracks how much you move, how long you work out, and how often you stand up. Bazee turns those rings into a shared adventure.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon icon-green">🎯</div>
+            <p>Your Apple Watch tracks how much you move, how long you work out, and how often you stand up. Bazee turns those Activity Rings into a shared adventure.</p>
+        </article>
+        <article class="feature-card reveal">
+            <div class="feature-icon icon-green" aria-hidden="true">🎯</div>
             <h3>Your Pace, Your Goals</h3>
-            <p>Set targets that fit your life — not some influencer's. A grandparent and a marathon runner can compete side by side and it'll still be fun.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon icon-amber">🎉</div>
+            <p>Set targets that fit your life, not some influencer's. A grandparent and a marathon runner can compete side by side and it'll still be fun.</p>
+        </article>
+        <article class="feature-card reveal">
+            <div class="feature-icon icon-amber" aria-hidden="true">🎉</div>
             <h3>Celebrate Every Win</h3>
             <p>Closed all three rings? Took a walk at lunch? Your group sees it. Every bit of effort gets celebrated, no matter how big or small.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon icon-pink">🕐</div>
-            <h3>Eating Window Tracker</h3>
-            <p>Track when you eat with a simple, beautiful clock. Set a different schedule for each day of the week and Bazee keeps you on track quietly.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon icon-blue">☁️</div>
+        </article>
+        <article class="feature-card reveal">
+            <div class="feature-icon icon-pink" aria-hidden="true">🕐</div>
+            <h3>Intermittent Fasting Tracker</h3>
+            <p>Follow your fast on a beautiful clock through four metabolic phases, with streaks and history. Set a different schedule for each day of the week.</p>
+        </article>
+        <article class="feature-card reveal">
+            <div class="feature-icon icon-blue" aria-hidden="true">☁️</div>
             <h3>Auto Backup &amp; Offline Access</h3>
-            <p>Your data is automatically backed up so you never lose a thing. Everything works offline too — no signal, no problem.</p>
-        </div>
+            <p>Your data is automatically backed up so you never lose a thing. Everything works offline too. No signal, no problem.</p>
+        </article>
     </div>
 </section>
 
 <!-- How it works -->
-<div class="how-section" id="how">
+<section class="how-section" id="how" aria-labelledby="how-title">
     <div class="how-inner">
-        <div style="text-align:center">
+        <div class="section-center">
             <div class="section-label">Getting Started</div>
-            <h2 style="font-size:clamp(30px,4vw,48px);font-weight:800;background:linear-gradient(135deg,#1E3A5F,#4A90E2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;">Ready in under a minute</h2>
-            <p style="font-size:18px;color:#4a6b8a;max-width:480px;margin:0 auto;">All you need is your iPhone and Apple Watch. No setup headaches, no fitness knowledge required.</p>
+            <h2 class="title" id="how-title">Ready in under a minute</h2>
+            <p class="lede" style="margin-bottom:0;">All you need is your iPhone, and an Apple Watch for the most accurate rings. No setup headaches, no fitness knowledge required.</p>
         </div>
-        <div class="steps">
-            <div class="step">
-                <div class="step-num">1</div>
-                <h3>Download &amp; Sign In</h3>
-                <p>One tap and you're in. No passwords to remember, no forms to fill out.</p>
-            </div>
-            <div class="step">
-                <div class="step-num">2</div>
-                <h3>Let Your Watch In</h3>
-                <p>Allow Bazee to read your activity rings. Your rings appear instantly and update all day long.</p>
-            </div>
-            <div class="step">
-                <div class="step-num">3</div>
-                <h3>Invite Your People</h3>
-                <p>Start a challenge and share a link. Group chat? Perfect. Family text thread? Even better.</p>
-            </div>
-            <div class="step">
-                <div class="step-num">4</div>
-                <h3>Move, Cheer, Repeat</h3>
-                <p>Watch everyone's rings fill up through the day. Every step counts. Every closed ring is worth celebrating.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Who is this for — photo cards -->
-<div class="audience-section">
-    <div style="text-align:center">
-        <div class="section-label">Made for everyone</div>
-        <h2 style="font-size:clamp(30px,4vw,48px);font-weight:800;background:linear-gradient(135deg,#1E3A5F,#4A90E2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;">No athletes required</h2>
-        <p style="font-size:18px;color:#4a6b8a;max-width:520px;margin:0 auto;">Bazee works for the whole crew — couch-to-5K folks, daily walkers, weekend hikers, and yes, the competitive ones too.</p>
-    </div>
-
-    <div class="audience-grid">
-        <div class="audience-card">
-            <div class="audience-card-photo">
-                <img
-                    src="family.jpg"
-                    alt="Family laughing and playing outdoors"
-                    loading="lazy"
-                />
-                <div class="audience-card-photo-overlay"></div>
-            </div>
-            <div class="audience-card-body">
-                <h3>Families 👨‍👩‍👧</h3>
-                <p>Get the whole household moving. Even the kids love checking the leaderboard and seeing Mom in the lead.</p>
-            </div>
-        </div>
-
-        <div class="audience-card">
-            <div class="audience-card-photo">
-                <img
-                    src="friends.jpg"
-                    alt="Group of friends laughing and having fun"
-                    loading="lazy"
-                />
-                <div class="audience-card-photo-overlay"></div>
-            </div>
-            <div class="audience-card-body">
-                <h3>Friend Groups 👯</h3>
-                <p>That group chat that never actually does anything? Now it does. Start a challenge and watch everyone wake up.</p>
-            </div>
-        </div>
-
-        <div class="audience-card">
-            <div class="audience-card-photo">
-                <img
-                    src="coworkers.jpg"
-                    alt="Coworkers smiling together"
-                    loading="lazy"
-                />
-                <div class="audience-card-photo-overlay"></div>
-            </div>
-            <div class="audience-card-body">
-                <h3>Coworkers 🏢</h3>
-                <p>A little friendly office rivalry goes a long way. Great for team wellness or just making Mondays bearable.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Privacy callout -->
-<div class="privacy-wrap">
-    <div class="privacy-callout">
-        <div class="lock">🔒</div>
-        <h3>We never see your health data</h3>
-        <p>Your activity stays on your own devices — always. It's automatically backed up so you never lose your history. Only your name and daily score are ever shared with your group. We don't sell anything, ever. <a href="bazee-privacy-policy.html">Read our Privacy Policy →</a></p>
-    </div>
-</div>
-
-<!-- Pricing -->
-<section id="pricing" style="padding:96px 24px;background:linear-gradient(160deg,#E8F4FB 0%,#F0F8FF 100%);">
-    <div style="max-width:900px;margin:0 auto;text-align:center;">
-        <div class="section-label">Pricing</div>
-        <h2 style="font-size:clamp(30px,4vw,48px);font-weight:800;background:linear-gradient(135deg,#1E3A5F,#4A90E2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px;">Try free for 1 month</h2>
-        <p style="font-size:18px;color:#4a6b8a;max-width:480px;margin:0 auto 52px;">No credit card pressure. Explore everything for 30 days on us, then pick the plan that fits.</p>
-
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;align-items:stretch;">
-
-            <!-- Individual -->
-            <div style="background:#fff;border-radius:24px;padding:36px 32px;box-shadow:0 4px 24px rgba(30,58,95,0.08);border:1.5px solid rgba(74,144,226,0.18);display:flex;flex-direction:column;gap:0;">
-                <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#4A90E2;margin-bottom:12px;">Individual</div>
-                <div style="font-size:46px;font-weight:900;color:#1E3A5F;line-height:1;">$7<span style="font-size:16px;font-weight:500;color:#7a9ab8;">/mo</span></div>
-                <div style="font-size:13px;color:#4A90E2;font-weight:600;margin-top:6px;margin-bottom:28px;">after 1-month free trial</div>
-
-                <ul style="list-style:none;padding:0;margin:0 0 32px;display:flex;flex-direction:column;gap:12px;text-align:left;">
-                    <li style="display:flex;align-items:center;gap:10px;font-size:15px;color:#3d5166;">
-                        <span style="color:#30D158;font-size:17px;">✓</span> All competitions &amp; leaderboards
-                    </li>
-                    <li style="display:flex;align-items:center;gap:10px;font-size:15px;color:#3d5166;">
-                        <span style="color:#30D158;font-size:17px;">✓</span> Activity ring tracking
-                    </li>
-                    <li style="display:flex;align-items:center;gap:10px;font-size:15px;color:#3d5166;">
-                        <span style="color:#30D158;font-size:17px;">✓</span> Eating window tracker
-                    </li>
-                    <li style="display:flex;align-items:center;gap:10px;font-size:15px;color:#3d5166;">
-                        <span style="color:#30D158;font-size:17px;">✓</span> Full history &amp; badges
-                    </li>
-                </ul>
-
-                <a href="#download" style="display:block;text-align:center;background:rgba(74,144,226,0.1);color:#1E3A5F;font-weight:700;font-size:16px;padding:14px 24px;border-radius:50px;text-decoration:none;border:1.5px solid rgba(74,144,226,0.25);margin-top:auto;transition:background 0.2s;">
-                    Start Free Trial
-                </a>
-            </div>
-
-            <!-- Family — highlighted -->
-            <div style="background:linear-gradient(135deg,#1E3A5F,#2a5280);border-radius:24px;padding:36px 32px;box-shadow:0 12px 40px rgba(30,58,95,0.22);border:1.5px solid transparent;display:flex;flex-direction:column;position:relative;overflow:hidden;">
-                <div style="position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.2);color:#fff;font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 10px;border-radius:50px;">Best Value</div>
-                <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#A8D8EA;margin-bottom:12px;">Family</div>
-                <div style="font-size:46px;font-weight:900;color:#fff;line-height:1;">$11<span style="font-size:16px;font-weight:500;color:rgba(255,255,255,0.6);">/mo</span></div>
-                <div style="font-size:13px;color:#A8D8EA;font-weight:600;margin-top:6px;margin-bottom:28px;">after 1-month free trial</div>
-
-                <ul style="list-style:none;padding:0;margin:0 0 32px;display:flex;flex-direction:column;gap:12px;text-align:left;">
-                    <li style="display:flex;align-items:center;gap:10px;font-size:15px;color:rgba(255,255,255,0.9);">
-                        <span style="color:#30D158;font-size:17px;">✓</span> Everything in Individual
-                    </li>
-                    <li style="display:flex;align-items:center;gap:10px;font-size:15px;color:rgba(255,255,255,0.9);">
-                        <span style="color:#30D158;font-size:17px;">✓</span> Up to 6 family members
-                    </li>
-                    <li style="display:flex;align-items:center;gap:10px;font-size:15px;color:rgba(255,255,255,0.9);">
-                        <span style="color:#30D158;font-size:17px;">✓</span> Shared family competitions
-                    </li>
-                    <li style="display:flex;align-items:center;gap:10px;font-size:15px;color:rgba(255,255,255,0.9);">
-                        <span style="color:#30D158;font-size:17px;">✓</span> Under $2/person per month
-                    </li>
-                </ul>
-
-                <a href="#download" style="display:block;text-align:center;background:#fff;color:#1E3A5F;font-weight:700;font-size:16px;padding:14px 24px;border-radius:50px;text-decoration:none;margin-top:auto;transition:opacity 0.2s;">
-                    Start Free Trial
-                </a>
-            </div>
-
-        </div>
-
-        <p style="margin-top:28px;font-size:13px;color:#7a9ab8;">Cancel anytime. No charges during your free month. Subscription renews monthly.</p>
+        <ol class="steps" style="list-style:none;">
+            <li class="step reveal"><div class="step-num">1</div><h3>Download &amp; Sign In</h3><p>One tap with Sign in with Apple. No passwords to remember, no forms to fill out.</p></li>
+            <li class="step reveal"><div class="step-num">2</div><h3>Connect Apple Health</h3><p>Allow Bazee to read your activity rings. Your rings appear instantly and update all day long.</p></li>
+            <li class="step reveal"><div class="step-num">3</div><h3>Invite Your People</h3><p>Create a competition and share the invite code. Group chat? Perfect. Family text thread? Even better.</p></li>
+            <li class="step reveal"><div class="step-num">4</div><h3>Move, Cheer, Repeat</h3><p>Watch everyone's points climb through the day. Every step counts. Every closed ring is worth celebrating.</p></li>
+        </ol>
     </div>
 </section>
 
-<!-- CTA with photo background -->
-<section class="cta-section" id="download">
+<!-- Audience -->
+<section class="section section-center" aria-labelledby="who-title">
+    <div class="section-label">Made for everyone</div>
+    <h2 class="title" id="who-title">No athletes required</h2>
+    <p class="lede">Bazee works for the whole crew: couch-to-5K folks, daily walkers, weekend hikers, and yes, the competitive ones too.</p>
+    <div class="audience-grid" style="text-align:left;">
+        <article class="audience-card reveal">
+            <div class="audience-card-photo"><img src="assets/family.jpg" alt="Family laughing and playing outdoors" width="900" height="491" loading="lazy"></div>
+            <div class="audience-card-body"><h3>Families 👨‍👩‍👧</h3><p>Get the whole household moving. Even the kids love checking the leaderboard and seeing Mom in the lead.</p></div>
+        </article>
+        <article class="audience-card reveal">
+            <div class="audience-card-photo"><img src="assets/friends.jpg" alt="Group of friends laughing and having fun" width="900" height="491" loading="lazy"></div>
+            <div class="audience-card-body"><h3>Friend Groups 👯</h3><p>That group chat that never actually does anything? Now it does. Start a competition and watch everyone wake up.</p></div>
+        </article>
+        <article class="audience-card reveal">
+            <div class="audience-card-photo"><img src="assets/coworkers.jpg" alt="Coworkers smiling together" width="900" height="491" loading="lazy"></div>
+            <div class="audience-card-body"><h3>Coworkers 🏢</h3><p>A little friendly office rivalry goes a long way. Great for team wellness or just making Mondays bearable.</p></div>
+        </article>
+    </div>
+</section>
+
+<!-- Free -->
+<section class="free-section" id="free" aria-labelledby="free-title">
+    <div class="free-card reveal">
+        <div class="price" aria-hidden="true">Free</div>
+        <h2 id="free-title">Free to download. Free to use.</h2>
+        <p class="sub">No subscription, no paywall, no trial that runs out. Everything in Bazee is unlocked from day one.</p>
+        <ul class="free-list">
+            <li>Create &amp; join competitions with live leaderboards</li>
+            <li>Activity Ring tracking with Apple Health</li>
+            <li>Intermittent fasting tracker &amp; history</li>
+            <li>Medals, badges &amp; full stats</li>
+        </ul>
+        <a href="https://apps.apple.com/us/app/bazee/id6759181286" class="app-store-btn" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="#1E3A5F" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+            Get Bazee on the App Store
+        </a>
+    </div>
+</section>
+
+<!-- Privacy -->
+<div class="privacy-wrap">
+    <div class="privacy-callout reveal">
+        <div class="lock" aria-hidden="true">🔒</div>
+        <h2>We never see your health data</h2>
+        <p>Your activity stays on your own devices, always. It's automatically backed up so you never lose your history. Only your name and daily score are ever shared with your group. We don't sell anything, ever. <a href="bazee-privacy-policy.html">Read our Privacy Policy →</a></p>
+    </div>
+</div>
+
+<!-- FAQ -->
+<section class="section section-center" id="faq" aria-labelledby="faq-title" style="padding-top:24px;">
+    <div class="section-label">Questions</div>
+    <h2 class="title" id="faq-title">Frequently asked questions</h2>
+    <p class="lede">Quick answers about scoring, Apple Watch, privacy and more.</p>
+    <div class="faq">
+        <details><summary>Is Bazee really free?</summary><p>Yes. Bazee is free to download and free to use, with no subscription and no paywall.</p></details>
+        <details><summary>Do I need an Apple Watch to use Bazee?</summary><p>Bazee reads your Move, Exercise and Stand data from Apple Health. An Apple Watch records all three rings most accurately, so we recommend one for the best experience.</p></details>
+        <details><summary>How are points scored?</summary><p>Each ring earns 1 point for every 1% of your goal, so closing all three rings is worth 300 points. Going beyond your goals earns more, up to 600 points per day.</p></details>
+        <details><summary>How do I invite friends and family?</summary><p>Create a competition, choose the start and end dates, then share the 6-character invite code. Friends enter the code to join before the competition starts.</p></details>
+        <details><summary>What health data does Bazee share?</summary><p>Only your display name and daily points are shared with the people in your competitions. Your detailed health data stays on your own devices and in your private iCloud. Read the full <a href="bazee-privacy-policy.html">Privacy Policy</a>.</p></details>
+        <details><summary>How does the fasting tracker work?</summary><p>Set a fasting schedule for each day of the week, start a fast, and watch the ring move through four phases: Digestion, Glycogen, Fat Mobilization and Ketogenic. Bazee also tracks your streaks and history.</p></details>
+        <details><summary>Is there an Android version of Bazee?</summary><p>Not at the moment. Bazee is built for iPhone and Apple Health and requires iOS 18.6 or later.</p></details>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="download" aria-labelledby="cta-title">
     <div class="cta-section-bg">
         <!-- Photo: people cheering with arms raised outdoors — Unsplash by Zachary Nelson -->
-        <img
-            src="https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=1600&q=80"
-            alt="People celebrating outdoors with arms raised"
-            loading="lazy"
-        />
-        <div class="cta-section-bg-overlay"></div>
+        <img src="https://images.unsplash.com/photo-1530549387789-4c1017266635?auto=format&fit=crop&w=1600&q=80" alt="" width="1600" height="1067" loading="lazy">
     </div>
     <div class="cta-section-content">
-        <h2>Who are you going to challenge?</h2>
-        <p>Download Bazee free and send your first challenge today. Your group chat is waiting.</p>
-        <a href="#" class="app-store-btn">
-            <svg viewBox="0 0 24 24" fill="#1E3A5F" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-            </svg>
+        <h2 id="cta-title">Who are you going to challenge?</h2>
+        <p>Download Bazee free and send your first invite today. Your group chat is waiting.</p>
+        <a href="https://apps.apple.com/us/app/bazee/id6759181286" class="app-store-btn" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="#1E3A5F" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
             Download on the App Store
         </a>
     </div>
 </section>
 
-<!-- Footer -->
+</main>
+
 <footer>
     <span class="footer-logo">Bazee</span>
-    <div class="footer-links">
+    <nav class="footer-links" aria-label="Footer">
+        <a href="support.html">Support</a>
         <a href="bazee-privacy-policy.html">Privacy Policy</a>
-        <a href="mailto:support@bazeeapp.com">Support</a>
-    </div>
+        <a href="https://apps.apple.com/us/app/bazee/id6759181286" rel="noopener">App Store</a>
+        <a href="mailto:support@bazee.app">support@bazee.app</a>
+    </nav>
     <span>© 2026 Bazee. All rights reserved.</span>
 </footer>
 
+<script>
+    document.documentElement.classList.add('js');
+    (function () {
+        var els = document.querySelectorAll('.reveal');
+        if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+        var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+        }, { threshold: 0.12 });
+        els.forEach(function (e) { io.observe(e); });
+    })();
+</script>
 </body>
 </html>
